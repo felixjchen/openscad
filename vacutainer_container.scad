@@ -1,20 +1,20 @@
 
 // Cylindar count
-cylinder_rows = 1;
-cylinder_cols = 1;
+cylinder_rows = 3;
+cylinder_cols = 6;
 
 // Cylinder dimensions
 cylinder_diameter = 13; // 1.3cm diameter
 cylinder_height = 20; // 2cm height
 
-cylinder_space = 5; // 0.5cm between cylinders
+cylinder_space = 10; // 0.5cm between cylinders
 
 // Countainer walls
-container_wall_width = 0.2; // 0.02cm walls
+container_wall_width = 2; // 0.02cm walls
 container_floor_height = 4; // 4cm floor
 
 // CONSTANTS
-$fn = 250;
+$fn = 30;
 
 
 difference() {

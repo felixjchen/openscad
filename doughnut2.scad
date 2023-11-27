@@ -1,7 +1,7 @@
 $fn = 100; // High value for smoothness
 
 // Knobs
-text_size = 3;
+text_size = 5;
 text_height = 1;
 
 module doughnut(inner_radius = 10, tube_radius = 5) {
