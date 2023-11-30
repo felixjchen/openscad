@@ -7,27 +7,30 @@ cylinder_cols = 6;
 cylinder_diameter = 13; // 1.3cm diameter
 cylinder_height = 20; // 2cm height
 
-cylinder_space = 10; // 0.5cm between cylinders
+cylinder_space = 10; // 0.1cm between cylinders
 
 // Countainer walls
-container_wall_width = 2; // 0.02cm walls
-container_floor_height = 4; // 4cm floor
+container_wall_width = 0; // 0.cm walls
+container_floor_height = 5; // 0.3cm floor
 
 // CONSTANTS
-$fn = 30;
-
+$fn = 100;
 
 difference() {
-    length = container_wall_width + cylinder_space + cylinder_rows*(cylinder_diameter + cylinder_space) + container_wall_width;
+    length = container_wall_width + cylinder_space + cylinder_rows *(cylinder_diameter + cylinder_space) + container_wall_width;
     
     width = container_wall_width + cylinder_space + cylinder_cols*(cylinder_diameter + cylinder_space) + container_wall_width;
     
     height = container_floor_height + cylinder_height;
     
     echo("Length: ", length, " Width: ", width, " Height: ", height);
-    cube([length, width, height]); // Outer cube
-    
-    
+
+    // cube([length, width, height]); // Outer cube
+    linear_extrude(height)  minkowski() {
+      square([length,width]); 
+      circle(4);
+    }
+
     // Creating the grid of cylinders
     translate([container_wall_width + cylinder_space + cylinder_diameter/2, container_wall_width + cylinder_space + cylinder_diameter/2, container_floor_height]) {
         for (i = [0:cylinder_rows-1]) {
