@@ -12,7 +12,7 @@ cylinder_space = 10; // 0.1cm between cylinders
 // Countainer walls
 container_wall_width = 0; // 0.cm walls
 container_floor_height = 5; // 0.3cm floor
-
+container_minkowski_size = 4; // 0.4cm circle
 // CONSTANTS
 $fn = 100;
 
@@ -27,12 +27,12 @@ difference() {
 
     // cube([length, width, height]); // Outer cube
     linear_extrude(height)  minkowski() {
-      square([length,width]); 
-      circle(4);
+      square([length-container_minkowski_size*2,width-container_minkowski_size*2]); 
+      circle(container_minkowski_size);
     }
 
     // Creating the grid of cylinders
-    translate([container_wall_width + cylinder_space + cylinder_diameter/2, container_wall_width + cylinder_space + cylinder_diameter/2, container_floor_height]) {
+    translate([container_wall_width + cylinder_space + cylinder_diameter/2 - container_minkowski_size, container_wall_width + cylinder_space + cylinder_diameter/2 - container_minkowski_size, container_floor_height]) {
         for (i = [0:cylinder_rows-1]) {
             for (j = [0:cylinder_cols-1]) {
                 translate([
