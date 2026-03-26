@@ -30,7 +30,7 @@ module inflate_adapter(h = 20) {
 
 module deflate_adapter(h = 17) {
     deflate_pump_od = 24;
-    deflate_pump_id = 24 - 1.45 * 2;
+    deflate_pump_id = 24 - 1.4 * 2;
     valve_od = 20;
     pump_grip = h * 0.4;
     valve_insert = h * 0.35;
